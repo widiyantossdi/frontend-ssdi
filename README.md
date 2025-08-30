@@ -6,7 +6,7 @@
 
 This contains everything you need to run your app locally.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1W_oyQkk8lFo-AOxpW5xmN52OIBuqjOco
+Frontend Demo dapat diakses di url : https://front-ssdi.unugha.id
 
 ## Run Locally
 
