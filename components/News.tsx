@@ -10,7 +10,9 @@ const News: React.FC<NewsProps> = ({ onSelectArticle }) => {
   const [loadedIndexes, setLoadedIndexes] = useState(new Set([0]));
   const [isTitleInView, setIsTitleInView] = useState(false);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
 
+  // Effect for Intersection Observer on title
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -21,17 +23,18 @@ const News: React.FC<NewsProps> = ({ onSelectArticle }) => {
       },
       { threshold: 0.1 }
     );
-
     const currentRef = titleRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
+    if (currentRef) observer.observe(currentRef);
+    return () => { if (currentRef) observer.unobserve(currentRef); };
+  }, []);
 
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
+  // Effect for handling window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 768);
     };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const placeholderImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400' style='background-color:%23F3F4F6'%3E%3C/svg%3E";
@@ -54,6 +57,17 @@ const News: React.FC<NewsProps> = ({ onSelectArticle }) => {
     setLoadedIndexes(prev => new Set(prev).add(slideIndex));
     setCurrentIndex(slideIndex);
   };
+  
+  // Dynamic calculation for transform
+  const getTransformStyle = () => {
+    if (isDesktop) {
+        // Desktop view: 75% width slides. Center the active slide by offsetting it.
+        const offset = -currentIndex * 75 + 12.5;
+        return { transform: `translateX(${offset}%)` };
+    }
+    // Mobile view: 100% width slides
+    return { transform: `translateX(-${currentIndex * 100}%)` };
+  };
 
   return (
     <section id="news" className="py-20 bg-neutral" aria-labelledby="news-heading">
@@ -69,15 +83,25 @@ const News: React.FC<NewsProps> = ({ onSelectArticle }) => {
           <p className="text-gray-600 mt-2">Informasi terkini seputar layanan dan sistem di SSDI.</p>
         </div>
         
-        <div className="max-w-3xl mx-auto relative group" role="region" aria-roledescription="carousel" aria-label="Berita dan Pengumuman">
+        <div className="max-w-4xl mx-auto relative group" role="region" aria-roledescription="carousel" aria-label="Berita dan Pengumuman">
           <div className="relative overflow-hidden w-full h-[28rem]">
             <div
               className="flex transition-transform ease-out duration-500 h-full"
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+              style={getTransformStyle()}
             >
               {NEWS_ARTICLES.map((article, index) => (
-                <div key={article.slug} className="w-full flex-shrink-0 h-full" role="group" aria-roledescription="slide" aria-label={`${index + 1} of ${NEWS_ARTICLES.length}`} aria-hidden={currentIndex !== index}>
-                  <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full mx-2">
+                <div 
+                  key={article.slug} 
+                  className="flex-shrink-0 h-full" 
+                  style={{ width: isDesktop ? '75%' : '100%' }}
+                  role="group" 
+                  aria-roledescription="slide" 
+                  aria-label={`${index + 1} of ${NEWS_ARTICLES.length}`} 
+                  aria-hidden={currentIndex !== index}
+                >
+                  <div 
+                    className={`bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full mx-2 transition-all duration-500 ${currentIndex === index ? 'scale-100' : 'scale-90 opacity-60'}`}
+                  >
                     <div className="overflow-hidden h-56 bg-neutral">
                       <img 
                         src={loadedIndexes.has(index) ? article.imageUrl : placeholderImage} 
@@ -93,7 +117,14 @@ const News: React.FC<NewsProps> = ({ onSelectArticle }) => {
                       </div>
                       <h3 className="text-lg font-bold text-dark mb-2 flex-grow">{article.title}</h3>
                       <p className="text-gray-600 text-sm mb-4">{article.excerpt}</p>
-                      <a href="#" onClick={(e) => { e.preventDefault(); onSelectArticle(article.slug); }} className="mt-auto text-primary font-semibold hover:underline">Baca Selengkapnya &rarr;</a>
+                      <a 
+                        href="#" 
+                        onClick={(e) => { e.preventDefault(); onSelectArticle(article.slug); }} 
+                        className={`mt-auto text-primary font-semibold hover:underline ${currentIndex !== index ? 'pointer-events-none' : ''}`}
+                        tabIndex={currentIndex !== index ? -1 : 0}
+                      >
+                        Baca Selengkapnya &rarr;
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -105,14 +136,14 @@ const News: React.FC<NewsProps> = ({ onSelectArticle }) => {
           </div>
           
           {/* Left Arrow */}
-          <button onClick={prevSlide} aria-label="Previous slide" className="absolute top-1/2 -translate-y-1/2 -left-4 md:-left-12 z-10 p-3 bg-white/70 hover:bg-white rounded-full shadow-md transition-all opacity-0 group-hover:opacity-100 focus:outline-none">
+          <button onClick={prevSlide} aria-label="Previous slide" className="absolute top-1/2 -translate-y-1/2 left-0 z-10 p-3 bg-white/70 hover:bg-white rounded-full shadow-md transition-all opacity-0 group-hover:opacity-100 focus:outline-none">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           
           {/* Right Arrow */}
-          <button onClick={nextSlide} aria-label="Next slide" className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-12 z-10 p-3 bg-white/70 hover:bg-white rounded-full shadow-md transition-all opacity-0 group-hover:opacity-100 focus:outline-none">
+          <button onClick={nextSlide} aria-label="Next slide" className="absolute top-1/2 -translate-y-1/2 right-0 z-10 p-3 bg-white/70 hover:bg-white rounded-full shadow-md transition-all opacity-0 group-hover:opacity-100 focus:outline-none">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>

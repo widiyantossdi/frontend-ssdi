@@ -77,7 +77,7 @@ export const SERVICES: Service[] = [
 export const NEWS_ARTICLES: NewsArticle[] = [
   {
     slug: 'peningkatan-server-siakad-2024',
-    imageUrl: 'https://images.unsplash.com/photo-1580894742597-87bc8789db3d?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1580894742597-87bc8789db3d?w=800&fm=webp&q=80&fit=crop',
     category: 'Pembaruan Sistem',
     title: 'Peningkatan Server SIAKAD untuk Kinerja Lebih Cepat',
     date: '15 Juli 2024',
@@ -86,7 +86,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
   },
   {
     slug: 'waspada-phishing-email-kampus',
-    imageUrl: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1555949963-ff98c872d815?w=800&fm=webp&q=80&fit=crop',
     category: 'Keamanan',
     title: 'Waspada Phishing: Lindungi Akun Email Kampus Anda',
     date: '10 Juli 2024',
@@ -95,7 +95,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
   },
   {
     slug: 'perluasan-wifi-gedung-baru',
-    imageUrl: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1528256951502-f5eda28f1155?w=800&fm=webp&q=80&fit=crop',
     category: 'Infrastruktur',
     title: 'Perluasan Jangkauan Wi-Fi di Area Gedung Baru',
     date: '5 Juli 2024',
@@ -104,7 +104,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
   },
   {
     slug: 'jadwal-pemeliharaan-sistem-agustus-2024',
-    imageUrl: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&fm=webp&q=80&fit=crop',
     category: 'Pengumuman',
     title: 'Jadwal Pemeliharaan Sistem Rutin Bulan Agustus',
     date: '28 Juli 2024',
@@ -113,7 +113,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
   },
   {
     slug: 'peluncuran-aplikasi-presensi-mobile',
-    imageUrl: 'https://images.unsplash.com/photo-1611605698335-8b1569810432?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1604062545299-61e0a27ac14b?w=800&fm=webp&q=80&fit=crop',
     category: 'Inovasi',
     title: 'Segera Hadir: Aplikasi Presensi Mobile untuk Mahasiswa',
     date: '25 Juli 2024',
@@ -122,7 +122,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
   },
   {
     slug: 'tips-mengelola-penyimpanan-email',
-    imageUrl: 'https://images.unsplash.com/photo-1585238342070-61e1e768b1ff?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1585238342070-61e1e768b1ff?w=800&fm=webp&q=80&fit=crop',
     category: 'Tips & Trik',
     title: 'Tips Efektif Mengelola Ruang Penyimpanan Email Kampus',
     date: '22 Juli 2024',
@@ -131,7 +131,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
   },
   {
     slug: 'update-sistem-operasi-lab-komputer',
-    imageUrl: 'https://images.unsplash.com/photo-1516116216624-53e697302047?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1593720219276-0b1e937f8fe2?w=800&fm=webp&q=80&fit=crop',
     category: 'Akademik',
     title: 'Pembaruan Sistem Operasi di Laboratorium Komputer',
     date: '18 Juli 2024',
@@ -140,7 +140,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
   },
   {
     slug: 'sosialisasi-penggunaan-lms-efektif',
-    imageUrl: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1588196749107-c9186d38b244?w=800&fm=webp&q=80&fit=crop',
     category: 'Pelatihan',
     title: 'Sosialisasi Penggunaan E-Learning (LMS) untuk Dosen',
     date: '16 Juli 2024',
@@ -149,7 +149,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
   },
   {
     slug: 'kebijakan-baru-keamanan-password',
-    imageUrl: 'https://images.unsplash.com/photo-1550643759-408239058656?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1614064641938-3bbee5ea2237?w=800&fm=webp&q=80&fit=crop',
     category: 'Keamanan',
     title: 'Pemberlakuan Kebijakan Keamanan Password Baru',
     date: '12 Juli 2024',
@@ -158,7 +158,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
   },
   {
     slug: 'layanan-helpdesk-via-whatsapp',
-    imageUrl: 'https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=800&fm=webp&q=80&fit=crop',
     category: 'Layanan',
     title: 'Kini Hadir! Layanan Helpdesk Cepat via WhatsApp',
     date: '8 Juli 2024',
