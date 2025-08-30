@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2315803d;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23166534;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='50' fill='url(%23g)'/%3E%3Ctext x='50' y='68' font-size='50' font-family='Poppins, sans-serif' font-weight='bold' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2315803d;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23166534;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='50' fill='url(%23g)'/%3E%3Ctext x='50' y='68' font-size='50' font-family='Poppins, sans-serif' font-weight='bold' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+
+    <!-- SEO Meta Tags -->
+    <title>SSDI UNUGHA Cilacap | Sistem & Sumber Daya Informasi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Situs resmi Lembaga Sistem dan Sumber Daya Informasi (SSDI) Universitas Nahdlatul Ulama Al Ghazali (UNUGHA) Cilacap. Kami menyediakan layanan dan infrastruktur teknologi informasi terdepan untuk mendukung kegiatan akademik." />
+    <meta name="keywords" content="SSDI UNUGHA, Universitas Nahdlatul Ulama Al Ghazali Cilacap, sistem informasi, layanan IT kampus, Wi-Fi kampus, email akademik, UNUGHA Cilacap, teknologi informasi, pusat data" />
+    <meta name="author" content="SSDI UNUGHA Cilacap" />
+    <meta name="theme-color" content="#166534">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://unugha.ac.id/ssdi">
+    <meta property="og:title" content="SSDI UNUGHA Cilacap | Sistem & Sumber Daya Informasi">
+    <meta property="og:description" content="Layanan dan infrastruktur teknologi informasi terdepan untuk mendukung kegiatan akademik di UNUGHA Cilacap.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://unugha.ac.id/ssdi">
+    <meta property="twitter:title" content="SSDI UNUGHA Cilacap | Sistem & Sumber Daya Informasi">
+    <meta property="twitter:description" content="Layanan dan infrastruktur teknologi informasi terdepan untuk mendukung kegiatan akademik di UNUGHA Cilacap.">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              'sans': ['Poppins', 'sans-serif'],
+            },
+            colors: {
+              'primary': '#166534',
+              'secondary': '#15803d',
+              'accent': '#84cc16',
+              'neutral': '#F3F4F6',
+              'dark': '#111827',
+            },
+            animation: {
+              fadeInUp: 'fadeInUp 0.8s ease-out forwards',
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        --text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+      }
+      .text-shadow {
+        text-shadow: var(--text-shadow);
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      *:focus-visible {
+        outline: 3px solid #84cc16;
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
+      
+      @keyframes kenburns {
+        0% {
+          transform: scale(1.05) translate(0, 0);
+        }
+        100% {
+          transform: scale(1.2) translate(-1%, 2%);
+        }
+      }
+      .animate-kenburns {
+        animation: kenburns 30s ease-out alternate-reverse infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          transform: translateX(-100%) skewX(-15deg);
+        }
+        100% {
+          transform: translateX(200%) skewX(-15deg);
+        }
+      }
+      .animate-shimmer::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+        animation: shimmer 4s infinite 2s ease-in-out;
+      }
+      
+      .animation-delay-200 { animation-delay: 200ms; }
+      .animation-delay-400 { animation-delay: 400ms; }
+      .animation-delay-600 { animation-delay: 600ms; }
+
+      /* This is to make sure the animated elements are initially hidden */
+      .animate-fadeInUp {
+        opacity: 0;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
