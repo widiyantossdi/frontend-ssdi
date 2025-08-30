@@ -39,7 +39,7 @@ const Header: React.FC = () => {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
-          <a href="#hero" onClick={(e) => scrollToSection(e, '#hero')} className="text-2xl font-bold text-primary relative inline-block overflow-hidden animate-shimmer">
+          <a href="#hero" onClick={(e) => scrollToSection(e, '#hero')} className={`text-2xl font-bold relative inline-block overflow-hidden animate-shimmer transition-colors duration-300 ${isScrolled ? 'text-primary' : 'text-white text-shadow'}`}>
             SSDI
           </a>
           
@@ -49,7 +49,7 @@ const Header: React.FC = () => {
                 key={link.name} 
                 href={link.href} 
                 onClick={(e) => scrollToSection(e, link.href)} 
-                className={`text-gray-600 hover:text-primary transition duration-300 font-medium ${isScrolled ? 'text-dark' : 'text-white'}`}
+                className={`font-medium transition-colors duration-300 ${isScrolled ? 'text-primary hover:text-secondary' : 'text-white text-shadow hover:text-neutral-200'}`}
               >
                 {link.name}
               </a>
@@ -57,7 +57,7 @@ const Header: React.FC = () => {
           </nav>
 
           <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className={`focus:outline-none ${isScrolled ? 'text-dark' : 'text-white'}`}>
+            <button onClick={() => setIsOpen(!isOpen)} className={`focus:outline-none transition-colors duration-300 ${isScrolled ? 'text-primary' : 'text-white text-shadow'}`}>
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}></path>
               </svg>

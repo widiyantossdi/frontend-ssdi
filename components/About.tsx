@@ -1,21 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const About: React.FC = () => {
+  const [isInView, setIsInView] = useState(false);
+  const imageContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.1, // Trigger animation when 10% of the element is visible
+      }
+    );
+
+    const currentRef = imageContainerRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, []);
+
   return (
-    <section id="about" className="py-20 bg-neutral">
+    <section id="about" className="py-20 bg-neutral" aria-labelledby="about-heading">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center gap-12">
-          <div className="md:w-1/2">
+          <div ref={imageContainerRef} className="md:w-1/2 rounded-lg shadow-2xl overflow-hidden">
             <img 
               src="https://picsum.photos/seed/about/800/600" 
               alt="Tim SSDI" 
-              className="rounded-lg shadow-2xl w-full"
+              className={`w-full transition-transform duration-1000 ease-out ${isInView ? 'scale-105' : 'scale-100'}`}
             />
           </div>
           <div className="md:w-1/2">
-            <h2 className="text-3xl font-bold text-primary mb-4">Tentang SSDI</h2>
+            <h2 id="about-heading" className="text-3xl font-bold text-primary mb-4">Tentang SSDI</h2>
             <p className="text-gray-600 mb-4 leading-relaxed">
-              Lembaga Sistem dan Sumber Daya Informasi (SSDI) adalah unit pusat yang bertanggung jawab atas perencanaan, pengembangan, pengelolaan, dan pemeliharaan seluruh infrastruktur dan sistem teknologi informasi di Universitas Nahdlatul Ulama Al Ghazali (UNUGHA) Cilacap.
+              UPT Sistem dan Sumber Daya Informasi (SSDI) adalah unit pusat yang bertanggung jawab atas perencanaan, pengembangan, pengelolaan, dan pemeliharaan seluruh infrastruktur dan sistem teknologi informasi di Universitas Nahdlatul Ulama Al Ghazali (UNUGHA) Cilacap.
             </p>
             <div className="space-y-4">
               <div>

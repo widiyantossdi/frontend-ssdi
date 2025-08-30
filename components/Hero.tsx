@@ -124,7 +124,7 @@ const Hero: React.FC = () => {
           Mendorong Inovasi Digital di Kampus
         </h1>
         <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-neutral-200 drop-shadow-md animate-fadeInUp animation-delay-200">
-          Lembaga Sistem dan Sumber Daya Informasi (SSDI) berkomitmen untuk menyediakan infrastruktur dan layanan teknologi informasi yang andal dan modern bagi seluruh civitas akademika.
+          UPT Sistem dan Sumber Daya Informasi (SSDI) berkomitmen untuk menyediakan infrastruktur dan layanan teknologi informasi yang andal dan modern bagi seluruh civitas akademika.
         </p>
         <a 
           href="#services" 

@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-xl font-bold mb-4">SSDI</h3>
             <p className="text-gray-400">
-              Lembaga Sistem dan Sumber Daya Informasi, Universitas Nahdlatul Ulama Al Ghazali Cilacap.
+              UPT Sistem dan Sumber Daya Informasi, Universitas Nahdlatul Ulama Al Ghazali Cilacap.
             </p>
           </div>
           <div>
@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
         <div className="mt-12 border-t border-gray-700 pt-8 text-center text-gray-400 text-sm">
-          <p>&copy; {new Date().getFullYear()} Lembaga Sistem dan Sumber Daya Informasi, UNUGHA Cilacap. All Rights Reserved.</p>
+          <p>&copy; {new Date().getFullYear()} UPT Sistem dan Sumber Daya Informasi, UNUGHA Cilacap. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
