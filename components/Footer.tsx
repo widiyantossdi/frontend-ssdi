@@ -23,10 +23,10 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Layanan Utama</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white transition">SIAKAD</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition">E-Learning</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition">Email Kampus</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition">Helpdesk</a></li>
+              <li><a href="https://siakad.unugha.ac.id" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">SIAKAD</a></li>
+              <li><a href="https://lms.unugha.ac.id" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">E-Learning</a></li>
+              <li><a href="https://webmail.unugha.ac.id/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">Email Kampus</a></li>
+              <li><a href="https://help.unugha.ac.id" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">Helpdesk</a></li>
             </ul>
           </div>
           <div>
