@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+    onGoHome: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onGoHome }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,7 +43,16 @@ const Header: React.FC = () => {
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith('#')) {
         e.preventDefault();
-        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+        onGoHome();
+        
+        // Use a short timeout to allow the main page components to render before scrolling
+        setTimeout(() => {
+            const section = document.querySelector(href);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 50);
+
         setIsOpen(false);
     }
   };
@@ -60,27 +73,31 @@ const Header: React.FC = () => {
             {navLinks.map((link) => (
               link.submenu ? (
                 <div key={link.name} className="relative group">
-                  <a 
-                    href={link.href}
-                    onClick={(e) => scrollToSection(e, link.href)}
-                    className={`${linkBaseClasses} ${isScrolled ? scrolledLinkClasses : unscrolledLinkClasses} flex items-center cursor-pointer`}
+                  <button
+                    onClick={(e) => scrollToSection(e as any, link.href)}
+                    className={`${linkBaseClasses} ${isScrolled ? scrolledLinkClasses : unscrolledLinkClasses} flex items-center cursor-pointer bg-transparent border-none`}
+                    aria-haspopup="true"
                   >
                     {link.name}
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 transition-transform duration-300 group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 transition-transform duration-300 group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                       <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                     </svg>
-                  </a>
+                  </button>
                   <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto">
-                    <div className="py-2">
+                    <div className="py-2" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                     {link.submenu.map(subLink => (
                       <a 
                         key={subLink.name} 
                         href={subLink.href} 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="block px-4 py-2 text-sm text-dark hover:bg-neutral hover:text-primary"
+                        className="flex items-center justify-between px-4 py-2 text-sm text-dark hover:bg-neutral hover:text-primary"
+                        role="menuitem"
                       >
                         {subLink.name}
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
                       </a>
                     ))}
                     </div>
@@ -102,7 +119,7 @@ const Header: React.FC = () => {
           <div className="md:hidden">
             <button 
               onClick={() => setIsOpen(!isOpen)} 
-              className={`focus:outline-none transition-colors duration-300 ${isScrolled ? 'text-primary' : 'text-white text-shadow'}`}
+              className={`focus:outline-none transition-colors duration-300 ${isScrolled ? 'text-primary' : 'text-white'}`}
               aria-expanded={isOpen}
               aria-controls="mobile-menu"
               aria-label="Toggle navigation menu"
@@ -125,13 +142,14 @@ const Header: React.FC = () => {
                     onClick={() => setIsServicesOpen(!isServicesOpen)}
                     className="w-full text-dark hover:text-primary transition duration-300 font-medium py-3 flex justify-center items-center"
                     aria-expanded={isServicesOpen}
+                    aria-controls={`submenu-${link.name}`}
                 >
                     {link.name}
-                    <svg xmlns="http://www.w3.org/2000/svg" className={`h-5 w-5 ml-1 transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" className={`h-5 w-5 ml-1 transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                     </svg>
                 </button>
-                <div className={`overflow-hidden transition-all duration-300 ease-in-out bg-neutral/50 ${isServicesOpen ? 'max-h-96' : 'max-h-0'}`}>
+                <div id={`submenu-${link.name}`} className={`overflow-hidden transition-all duration-300 ease-in-out bg-neutral/50 ${isServicesOpen ? 'max-h-96' : 'max-h-0'}`}>
                     <div className="flex flex-col items-center py-2 space-y-1">
                         {link.submenu.map(subLink => (
                              <a 
@@ -139,9 +157,12 @@ const Header: React.FC = () => {
                                 href={subLink.href} 
                                 target="_blank" 
                                 rel="noopener noreferrer"
-                                className="w-full text-dark hover:text-primary transition duration-300 font-medium py-2"
+                                className="w-full text-dark hover:text-primary transition duration-300 font-medium py-2 flex items-center justify-center gap-2"
                             >
                                 {subLink.name}
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
                             </a>
                         ))}
                     </div>

@@ -1,13 +1,44 @@
-
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { SERVICES } from '../constants';
 
 const Services: React.FC = () => {
+  const [isTitleInView, setIsTitleInView] = useState(false);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsTitleInView(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const currentRef = titleRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, []);
+
   return (
-    <section id="services" className="py-20 bg-white">
+    <section id="services" className="py-20 bg-white" aria-labelledby="services-heading">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-primary">Layanan Kami</h2>
+          <h2 
+            ref={titleRef}
+            id="services-heading" 
+            className={`text-3xl font-bold text-primary ${isTitleInView ? 'animate-fadeInUp' : 'opacity-0'}`}
+          >
+            Layanan Kami
+          </h2>
           <p className="text-gray-600 mt-2 max-w-2xl mx-auto">Kami menyediakan berbagai layanan teknologi untuk mendukung aktivitas akademik dan operasional kampus.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

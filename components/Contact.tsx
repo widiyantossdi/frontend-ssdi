@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 type FormErrors = {
   name: string;
@@ -18,6 +18,32 @@ const Contact: React.FC = () => {
     phone: '',
     message: '',
   });
+
+  const [isTitleInView, setIsTitleInView] = useState(false);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsTitleInView(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const currentRef = titleRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, []);
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = { name: '', phone: '', message: '' };
@@ -86,7 +112,13 @@ const Contact: React.FC = () => {
     <section id="contact" className="py-20 bg-neutral" aria-labelledby="contact-heading">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 id="contact-heading" className="text-3xl font-bold text-primary">Hubungi Kami</h2>
+          <h2 
+            ref={titleRef}
+            id="contact-heading" 
+            className={`text-3xl font-bold text-primary ${isTitleInView ? 'animate-fadeInUp' : 'opacity-0'}`}
+          >
+            Hubungi Kami
+          </h2>
           <p className="text-gray-600 mt-2">Kami siap membantu Anda. Kunjungi kami atau kirim pesan cepat melalui formulir di bawah ini.</p>
         </div>
         <div className="flex flex-col md:flex-row gap-12 bg-white p-8 md:p-10 rounded-lg shadow-xl">

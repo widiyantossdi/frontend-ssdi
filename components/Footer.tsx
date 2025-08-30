@@ -1,6 +1,12 @@
 import React from 'react';
 
 const Footer: React.FC = () => {
+  const ExternalLinkIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+    </svg>
+  );
+
   return (
     <footer className="bg-dark text-white">
       <div className="container mx-auto px-6 py-12">
@@ -23,10 +29,10 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Layanan Utama</h3>
             <ul className="space-y-2">
-              <li><a href="https://siakad.unugha.ac.id" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">SIAKAD</a></li>
-              <li><a href="https://lms.unugha.ac.id" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">E-Learning</a></li>
-              <li><a href="https://webmail.unugha.ac.id/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">Email Kampus</a></li>
-              <li><a href="https://help.unugha.ac.id" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">Helpdesk</a></li>
+              <li><a href="https://siakad.unugha.ac.id" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition">SIAKAD <ExternalLinkIcon /></a></li>
+              <li><a href="https://lms.unugha.ac.id" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition">E-Learning <ExternalLinkIcon /></a></li>
+              <li><a href="https://webmail.unugha.ac.id/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition">Email Kampus <ExternalLinkIcon /></a></li>
+              <li><a href="https://help.unugha.ac.id" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition">Helpdesk <ExternalLinkIcon /></a></li>
             </ul>
           </div>
           <div>
