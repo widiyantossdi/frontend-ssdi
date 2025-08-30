@@ -6,7 +6,7 @@
 
 This contains everything you need to run your app locally.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1W_oyQkk8lFo-AOxpW5xmN52OIBuqjOco
+Dome FrontEnd Page at https://ssdi.unugha.id
 
 ## Run Locally
 
