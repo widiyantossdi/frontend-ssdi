@@ -97,7 +97,7 @@ const Contact: React.FC = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                 <div>
                   <h4 className="font-semibold text-dark">Alamat</h4>
-                  <p>Gedung Rektorat Lt. 2, Universitas Nahdlatul Ulama Al Ghazali<br/>Jl. Kemerdekaan Barat No.17, Kesugihan, Cilacap, Jawa Tengah</p>
+                  <p>Gedung AlGhozali 2 Lt. 1 No 106, Universitas Nahdlatul Ulama Al Ghazali<br/>Jl. Kemerdekaan Barat No.17, Kesugihan, Cilacap, Jawa Tengah</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -143,6 +143,20 @@ const Contact: React.FC = () => {
             </form>
           </div>
         </div>
+
+        <div className="mt-12 bg-white p-4 rounded-lg shadow-xl overflow-hidden">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.512613583592!2d109.1136618153631!3d-7.62768809450372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e656d00591b6e6b%3A0x4c44242ce97b2046!2sUniversitas%20Nahdlatul%20Ulama%20Al%20Ghazali%20(UNUGHA)%20Cilacap!5e0!3m2!1sen!2sid!4v1718873491238!5m2!1sen!2sid"
+                width="100%"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Peta Lokasi UNUGHA Cilacap"
+            ></iframe>
+        </div>
+
       </div>
     </section>
   );
